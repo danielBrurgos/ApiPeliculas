@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineDaniel Premium</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/705/705062.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .heart-active {
+            color: #f59e0b !important; /* Amber-500 */
+            fill: #f59e0b;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans">
+    <header class="sticky top-0 z-50 p-6 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800 flex flex-col gap-6">
+        <div class="flex justify-between items-center w-full">
+            <h1 class="text-3xl font-black text-amber-500 tracking-tighter cursor-pointer hover:opacity-80 transition-opacity" onclick="window.location.reload()">CINE DANIEL</h1>
+            
+            <div class="flex items-center gap-6 w-full md:w-auto justify-end">
+                <form id="form" class="hidden md:block w-64">
+                    <input type="text" id="search" placeholder="Buscar película..." 
+                           class="w-full bg-zinc-900 border border-zinc-800 rounded-full px-5 py-2 outline-none focus:ring-1 focus:ring-amber-500/50 transition-all text-sm text-zinc-300">
+                </form>
+
+                <div id="google_btn"></div>
+
+                <div id="user_profile" class="hidden flex items-center gap-3 bg-zinc-900 p-1 pr-4 rounded-full border border-zinc-800">
+                    <img id="user_img" src="" class="w-8 h-8 rounded-full border border-amber-500/30">
+                    <span id="user_name" class="text-xs font-bold text-zinc-200"></span>
+                    <button onclick="logout()" class="text-[10px] text-red-500 hover:text-red-400 uppercase font-black tracking-tighter ml-2">Salir</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative group">
+            <div id="genres" class="flex gap-3 overflow-x-auto pb-2 scroll-smooth no-scrollbar">
+                </div>
+            <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-zinc-950 to-transparent pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-zinc-950 to-transparent pointer-events-none"></div>
+        </div>
+    </header>
+
+    <main id="main" class="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+        </main>
+
+    <div id="modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md overflow-y-auto p-4 md:p-10 transition-all duration-300">
+        <button onclick="closeModal()" class="fixed top-5 right-8 text-white text-5xl font-light hover:text-amber-500 transition-colors z-[110]">&times;</button>
+        <div id="modal-content" class="max-w-6xl mx-auto flex flex-col gap-10 mt-10">
+            </div>
+    </div>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>
